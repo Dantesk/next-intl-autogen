@@ -1,15 +1,24 @@
 # next-intl-autogen
 
+[![npm version](https://badge.fury.io/js/next-intl-autogen.svg)](https://badge.fury.io/js/next-intl-autogen)
+[![Node.js Version](https://img.shields.io/node/v/next-intl-autogen.svg)](https://nodejs.org/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue.svg)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![CI](https://github.com/YOUR_USERNAME/next-intl-autogen/workflows/CI/badge.svg)](https://github.com/YOUR_USERNAME/next-intl-autogen/actions)
+[![codecov](https://codecov.io/gh/YOUR_USERNAME/next-intl-autogen/branch/main/graph/badge.svg)](https://codecov.io/gh/YOUR_USERNAME/next-intl-autogen)
+
 A CLI tool to automate translation extraction for Next.js projects using next-intl. It scans your source files, extracts hardcoded strings from JSX elements, generates i18n keys, updates JSON message files, and optionally transforms code to use `useTranslations`.
 
-## Features
+## ✨ Features
 
-- **Automatic Extraction**: Scans TypeScript/JSX files and extracts hardcoded text from JSX elements.
-- **Smart Key Generation**: Generates context-aware keys based on file path, element type, and text content.
-- **Idempotent Operations**: Multiple runs don't create duplicates or unnecessary changes.
-- **Safety First**: Supports dry-run mode, ignores already-internationalized files, and provides clear logging.
-- **Monorepo Support**: Works with relative paths and custom ignore patterns.
-- **CI Ready**: Provides meaningful exit codes and verbose output for automation.
+- **🔍 Automatic Extraction**: Scans TypeScript/JSX files and extracts hardcoded text from JSX elements
+- **🎯 Smart Key Generation**: Generates context-aware keys based on file path, element type, and text content
+- **🔄 Idempotent Operations**: Multiple runs don't create duplicates or unnecessary changes
+- **🛡️ Safety First**: Supports dry-run mode, ignores already-internationalized files, and provides clear logging
+- **📦 Monorepo Support**: Works with relative paths and custom ignore patterns
+- **🤖 CI Ready**: Provides meaningful exit codes and verbose output for automation
+- **🎨 Interactive Setup**: Guided configuration for new projects
+- **📊 Translation Analysis**: Comprehensive completeness analysis across locales
 
 ## Installation
 
@@ -326,14 +335,52 @@ npm test
 npm run dev scan -- --verbose
 ```
 
-## Contributing
+## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch
-3. Add tests for new functionality
-4. Ensure all tests pass
-5. Submit a pull request
+We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for detailed information.
 
-## License
+### Quick Start for Contributors
 
-MIT
+1. **Fork** the repository on GitHub
+2. **Clone** your fork: `git clone https://github.com/YOUR_USERNAME/next-intl-autogen.git`
+3. **Install dependencies**: `npm install`
+4. **Create a feature branch**: `git checkout -b feature/your-feature-name`
+5. **Make your changes** and add tests
+6. **Run tests**: `npm test`
+7. **Build**: `npm run build`
+8. **Submit a Pull Request**
+
+### Development Scripts
+
+```bash
+# Run tests
+npm test
+
+# Run tests in watch mode
+npm run test:watch
+
+# Build the project
+npm run build
+
+# Run linter
+npm run lint
+
+# Format code
+npm run format
+```
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Created by [Dantesk](https://github.com/YOUR_USERNAME)
+- Contributors: [Forz](https://github.com/Forz)
+
+## 📞 Support
+
+- 📖 [Documentation](https://github.com/YOUR_USERNAME/next-intl-autogen#readme)
+- 🐛 [Bug Reports](https://github.com/YOUR_USERNAME/next-intl-autogen/issues)
+- 💡 [Feature Requests](https://github.com/YOUR_USERNAME/next-intl-autogen/issues)
+- 🔒 [Security Issues](SECURITY.md)

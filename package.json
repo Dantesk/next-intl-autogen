@@ -11,7 +11,13 @@
     "build": "tsc",
     "start": "node dist/cli/index.js",
     "dev": "tsx src/cli/index.ts",
-    "test": "vitest"
+    "test": "vitest",
+    "test:watch": "vitest --watch",
+    "lint": "eslint src/**/*.ts test/**/*.ts",
+    "lint:fix": "eslint src/**/*.ts test/**/*.ts --fix",
+    "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\" \"*.md\"",
+    "format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\" \"*.md\"",
+    "prepublishOnly": "npm run lint && npm test && npm run build"
   },
   "keywords": [
     "next-intl",
@@ -20,8 +26,27 @@
     "typescript",
     "cli"
   ],
-  "author": "Your Name",
+  "author": "Dantesk",
+  "contributors": ["Forz"],
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/next-intl-autogen.git"
+  },
+  "homepage": "https://github.com/YOUR_USERNAME/next-intl-autogen#readme",
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/next-intl-autogen/issues"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "dist",
+    "bin",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
   "dependencies": {
     "@babel/core": "^7.28.5",
     "@babel/generator": "^7.28.5",
@@ -39,6 +64,10 @@
     "@types/babel__generator": "^7.27.0",
     "@types/babel__traverse": "^7.28.0",
     "@types/node": "^24.10.0",
+    "@typescript-eslint/eslint-plugin": "^8.0.0",
+    "@typescript-eslint/parser": "^8.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "vitest": "^4.0.8"
