@@ -376,7 +376,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ## 🙏 Acknowledgments
 
 - Created by [Dantesk](https://github.com/Dantesk)
-- Contributors: [Forz](https://github.com/Forz)
+- Contributors: [Forz70043](https://github.com/Forz70043)
 
 ## 📞 Support
 
