@@ -31,11 +31,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_USERNAME/next-intl-autogen.git"
+    "url": "https://github.com/Dantesk/next-intl-autogen.git"
   },
-  "homepage": "https://github.com/YOUR_USERNAME/next-intl-autogen#readme",
+  "homepage": "https://github.com/Dantesk/next-intl-autogen#readme",
   "bugs": {
-    "url": "https://github.com/YOUR_USERNAME/next-intl-autogen/issues"
+    "url": "https://github.com/Dantesk/next-intl-autogen/issues"
   },
   "engines": {
     "node": ">=18.0.0"
@@ -64,10 +64,10 @@
     "@types/babel__generator": "^7.27.0",
     "@types/babel__traverse": "^7.28.0",
     "@types/node": "^24.10.0",
-    "@typescript-eslint/eslint-plugin": "^8.0.0",
-    "@typescript-eslint/parser": "^8.0.0",
-    "eslint": "^9.0.0",
-    "prettier": "^3.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.46.4",
+    "@typescript-eslint/parser": "^8.46.4",
+    "eslint": "^9.39.1",
+    "prettier": "^3.6.2",
     "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "vitest": "^4.0.8"

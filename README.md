@@ -4,8 +4,8 @@
 [![Node.js Version](https://img.shields.io/node/v/next-intl-autogen.svg)](https://nodejs.org/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.9.3-blue.svg)](https://www.typescriptlang.org/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![CI](https://github.com/YOUR_USERNAME/next-intl-autogen/workflows/CI/badge.svg)](https://github.com/YOUR_USERNAME/next-intl-autogen/actions)
-[![codecov](https://codecov.io/gh/YOUR_USERNAME/next-intl-autogen/branch/main/graph/badge.svg)](https://codecov.io/gh/YOUR_USERNAME/next-intl-autogen)
+[![CI](https://github.com/Dantesk/next-intl-autogen/workflows/CI/badge.svg)](https://github.com/Dantesk/next-intl-autogen/actions)
+[![codecov](https://codecov.io/gh/Dantesk/next-intl-autogen/branch/main/graph/badge.svg)](https://codecov.io/gh/Dantesk/next-intl-autogen)
 
 A CLI tool to automate translation extraction for Next.js projects using next-intl. It scans your source files, extracts hardcoded strings from JSX elements, generates i18n keys, updates JSON message files, and optionally transforms code to use `useTranslations`.
 
@@ -342,7 +342,7 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 ### Quick Start for Contributors
 
 1. **Fork** the repository on GitHub
-2. **Clone** your fork: `git clone https://github.com/YOUR_USERNAME/next-intl-autogen.git`
+2. **Clone** your fork: `git clone https://github.com/Dantesk/next-intl-autogen.git`
 3. **Install dependencies**: `npm install`
 4. **Create a feature branch**: `git checkout -b feature/your-feature-name`
 5. **Make your changes** and add tests
@@ -375,12 +375,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- Created by [Dantesk](https://github.com/YOUR_USERNAME)
+- Created by [Dantesk](https://github.com/Dantesk)
 - Contributors: [Forz](https://github.com/Forz)
 
 ## 📞 Support
 
-- 📖 [Documentation](https://github.com/YOUR_USERNAME/next-intl-autogen#readme)
-- 🐛 [Bug Reports](https://github.com/YOUR_USERNAME/next-intl-autogen/issues)
-- 💡 [Feature Requests](https://github.com/YOUR_USERNAME/next-intl-autogen/issues)
+- 📖 [Documentation](https://github.com/Dantesk/next-intl-autogen#readme)
+- 🐛 [Bug Reports](https://github.com/Dantesk/next-intl-autogen/issues)
+- 💡 [Feature Requests](https://github.com/Dantesk/next-intl-autogen/issues)
 - 🔒 [Security Issues](SECURITY.md)
