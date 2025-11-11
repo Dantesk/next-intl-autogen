@@ -1,0 +1,46 @@
+{
+  "name": "next-intl-autogen",
+  "version": "1.0.0",
+  "description": "CLI tool to automate translation extraction for Next.js projects using next-intl",
+  "type": "module",
+  "main": "dist/index.js",
+  "bin": {
+    "next-intl-autogen": "bin/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli/index.js",
+    "dev": "tsx src/cli/index.ts",
+    "test": "vitest"
+  },
+  "keywords": [
+    "next-intl",
+    "i18n",
+    "next.js",
+    "typescript",
+    "cli"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/core": "^7.28.5",
+    "@babel/generator": "^7.28.5",
+    "@babel/parser": "^7.28.5",
+    "@babel/preset-react": "^7.28.5",
+    "@babel/preset-typescript": "^7.28.5",
+    "@babel/traverse": "^7.28.5",
+    "@babel/types": "^7.28.5",
+    "commander": "^14.0.2",
+    "fast-glob": "^3.3.3",
+    "zod": "^4.1.12"
+  },
+  "devDependencies": {
+    "@types/babel__core": "^7.20.5",
+    "@types/babel__generator": "^7.27.0",
+    "@types/babel__traverse": "^7.28.0",
+    "@types/node": "^24.10.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.8"
+  }
+}
