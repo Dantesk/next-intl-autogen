@@ -14,9 +14,11 @@ If you discover a security vulnerability in next-intl-autogen, please help us by
 
 **Please do not report security vulnerabilities through public GitHub issues.**
 
-Instead, please report security vulnerabilities by emailing:
-- **Email**: [INSERT SECURITY EMAIL OR USE GITHUB SECURITY TAB]
-- **Subject**: `[SECURITY] Vulnerability in next-intl-autogen`
+Instead, please report security vulnerabilities using GitHub's Security Advisories feature:
+
+- Go to: https://github.com/Dantesk/next-intl-autogen/security/advisories/new
+- Select "Report a vulnerability"
+- Fill out the security advisory form with details about the issue
 
 ### What to Include
 
