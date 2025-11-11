@@ -1,5 +1,4 @@
-import { basename, dirname } from 'path';
-import { ExtractedText } from './TextExtractor.js';
+import { dirname } from 'path';
 
 export interface KeyGenerationContext {
   filePath: string;

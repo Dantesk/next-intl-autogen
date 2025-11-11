@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { ProjectAnalyzer } from '../src/core/ProjectAnalyzer';
-import { existsSync, readFileSync } from 'fs';
+import { existsSync, readFileSync, type PathLike } from 'fs';
 
 // Mock fs functions
 vi.mock('fs', () => ({
@@ -21,7 +21,7 @@ describe('ProjectAnalyzer', () => {
   });
 
   it('should detect Next.js App Router project', () => {
-    mockExistsSync.mockImplementation((path: any) => {
+    mockExistsSync.mockImplementation((path: PathLike) => {
       if (path === '/test/project/package.json') return true;
       if (path === '/test/project/app') return true;
       if (path === '/test/project/src') return false;
@@ -40,7 +40,7 @@ describe('ProjectAnalyzer', () => {
   });
 
   it('should detect Next.js Pages Router with src folder', () => {
-    mockExistsSync.mockImplementation((path: any) => {
+    mockExistsSync.mockImplementation((path: PathLike) => {
       if (path === '/test/project/package.json') return true;
       if (path === '/test/project/src') return true;
       if (path === '/test/project/src/pages') return true;
@@ -82,7 +82,7 @@ describe('ProjectAnalyzer', () => {
   });
 
   it('should find existing config files', () => {
-    mockExistsSync.mockImplementation((path: any) => {
+    mockExistsSync.mockImplementation((path: PathLike) => {
       if (path === '/test/project/package.json') return true;
       if (path === '/test/project/next-intl-autogen.config.ts') return true;
       return false;

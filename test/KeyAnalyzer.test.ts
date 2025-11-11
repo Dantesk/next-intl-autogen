@@ -2,6 +2,10 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { KeyAnalyzer, IKeyAnalyzer, AnalysisReport } from '../src/core/KeyAnalyzer';
 import { Config } from '../src/config/loadConfig';
 import { Logger } from '../src/utils/Logger';
+import { IMessagesRepository } from '../src/core/MessagesRepository';
+
+// Test message type for better type safety
+type TestMessages = Record<string, string | Record<string, string | Record<string, string>>>;
 
 const testConfig: Config = {
   localesDir: './test-messages',
@@ -18,8 +22,8 @@ const testConfig: Config = {
 };
 
 // Mock MessagesRepository
-class MockMessagesRepository {
-  private messages: Record<string, Record<string, any>> = {
+class MockMessagesRepository implements IMessagesRepository {
+  private messages: Record<string, TestMessages> = {
     en: {
       common: {
         welcome: 'Welcome',
@@ -62,8 +66,16 @@ class MockMessagesRepository {
     }
   };
 
-  loadMessages(locale: string): Record<string, any> {
+  loadMessages(locale: string): TestMessages {
     return this.messages[locale] || {};
+  }
+
+  saveMessages(_locale: string, _messages: TestMessages): void {
+    // No-op for tests
+  }
+
+  addTranslation(_namespace: string, _key: string, _text: string, _locale: string): void {
+    // No-op for tests
   }
 }
 
@@ -75,7 +87,7 @@ describe('KeyAnalyzer', () => {
   beforeEach(() => {
     mockRepo = new MockMessagesRepository();
     logger = new Logger();
-    analyzer = new KeyAnalyzer(testConfig, mockRepo as any, logger);
+    analyzer = new KeyAnalyzer(testConfig, mockRepo, logger);
   });
 
   it('should analyze keys correctly', () => {
@@ -120,7 +132,8 @@ describe('KeyAnalyzer', () => {
     const emptyRepo = {
       loadMessages: () => ({})
     };
-    const emptyAnalyzer = new KeyAnalyzer(testConfig, emptyRepo as any, logger);
+    // @ts-expect-error - Partial mock for testing empty case
+    const emptyAnalyzer = new KeyAnalyzer(testConfig, emptyRepo, logger);
     const report = emptyAnalyzer.analyzeKeys();
 
     expect(report.summary.totalKeysInReference).toBe(0);
@@ -144,8 +157,9 @@ describe('KeyAnalyzer', () => {
       }
     };
 
-    const analyzer = new KeyAnalyzer(testConfig, mockRepo as any, logger);
-    const flattened = (analyzer as any).flattenKeys(messages);
+    const analyzer = new KeyAnalyzer(testConfig, mockRepo, logger);
+    // @ts-expect-error - Testing private method flattenKeys
+    const flattened = analyzer.flattenKeys(messages);
 
     expect(flattened).toEqual([
       'common.simple',

@@ -31,7 +31,7 @@ export class TextExtractor {
     if (!ast) return texts;
 
     const isTechnicalString = (text: string): boolean => {
-      return /^\s*$/.test(text) || /^[0-9\s\-\.]+$/.test(text);
+      return /^\s*$/.test(text) || /^[0-9\s\-.]+$/.test(text);
     };
 
     babel.traverse(ast, {
@@ -61,6 +61,6 @@ export class TextExtractor {
 
   private isTechnicalString(text: string): boolean {
     // Simple heuristic: ignore if contains only spaces, numbers, or common technical patterns
-    return /^\s*$/.test(text) || /^[0-9\s\-\.]+$/.test(text);
+    return /^\s*$/.test(text) || /^[0-9\s\-.]+$/.test(text);
   }
 }

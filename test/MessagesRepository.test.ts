@@ -1,8 +1,7 @@
 import { describe, it, expect, beforeEach, afterEach } from 'vitest';
 import { FileMessagesRepository } from '../src/core/MessagesRepository';
 import { Config } from '../src/config/loadConfig';
-import { writeFileSync, existsSync, unlinkSync, rmSync } from 'fs';
-import { join } from 'path';
+import { existsSync, rmSync } from 'fs';
 
 const testConfig: Config = {
   localesDir: './test-messages',

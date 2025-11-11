@@ -5,7 +5,7 @@ import { IKeyGenerator, DefaultKeyGenerator } from './KeyGenerator.js';
 import { IMessagesRepository, FileMessagesRepository } from './MessagesRepository.js';
 import { CodeTransformer } from './CodeTransformer.js';
 import { KeyAnalyzer, AnalysisReport } from './KeyAnalyzer.js';
-import { ProjectAnalyzer, ProjectStructure } from './ProjectAnalyzer.js';
+import { ProjectAnalyzer } from './ProjectAnalyzer.js';
 import { InteractiveConfig } from './InteractiveConfig.js';
 import { Logger } from '../utils/Logger.js';
 

@@ -1,5 +1,11 @@
-import { existsSync, readdirSync, readFileSync } from 'fs';
-import { join, resolve } from 'path';
+import { existsSync, readFileSync } from 'fs';
+import { join } from 'path';
+
+interface PackageJson {
+  dependencies?: Record<string, string>;
+  devDependencies?: Record<string, string>;
+  [key: string]: unknown;
+}
 
 export interface ProjectStructure {
   framework: 'nextjs' | 'vite' | 'other';
@@ -8,7 +14,7 @@ export interface ProjectStructure {
   possibleSourceDirs: string[];
   hasNextIntl: boolean;
   existingConfig?: string | undefined;
-  packageJson: any;
+  packageJson: PackageJson;
 }
 
 export class ProjectAnalyzer {
@@ -36,21 +42,22 @@ export class ProjectAnalyzer {
     return structure;
   }
 
-  private readPackageJson(): any {
-    const packageJsonPath = join(this.projectRoot, 'package.json');
-    if (!existsSync(packageJsonPath)) {
-      throw new Error('package.json not found. Are you in a Node.js project?');
+  private readPackageJson(): PackageJson {
+    try {
+      const packagePath = join(process.cwd(), 'package.json');
+      const content = readFileSync(packagePath, 'utf-8');
+      return JSON.parse(content) as PackageJson;
+    } catch {
+      return {};
     }
-    return JSON.parse(readFileSync(packageJsonPath, 'utf-8'));
   }
 
-  private detectFramework(packageJson: any): 'nextjs' | 'vite' | 'other' {
+  private detectFramework(packageJson: PackageJson): 'nextjs' | 'vite' | 'other' {
     const deps = { ...packageJson.dependencies, ...packageJson.devDependencies };
-
-    if (deps['next']) {
+    if (deps?.['next']) {
       return 'nextjs';
     }
-    if (deps['vite']) {
+    if (deps?.['vite']) {
       return 'vite';
     }
     return 'other';
@@ -102,9 +109,9 @@ export class ProjectAnalyzer {
     return dirs.filter(dir => existsSync(join(this.projectRoot, dir.replace(/\/$/, ''))));
   }
 
-  private detectNextIntl(packageJson: any): boolean {
+  private detectNextIntl(packageJson: PackageJson): boolean {
     const deps = { ...packageJson.dependencies, ...packageJson.devDependencies };
-    return !!(deps['next-intl'] || deps['@next-intl']);
+    return !!(deps?.['next-intl'] || deps?.['@next-intl']);
   }
 
   private findExistingConfig(): string | undefined {
@@ -153,7 +160,7 @@ export class ProjectAnalyzer {
     return [
       `${baseDir}**/*.{ts,tsx,js,jsx}`,
       `${baseDir}components/**/*.{ts,tsx,js,jsx}`
-    ].filter(pattern => {
+    ].filter(_pattern => {
       // Check if pattern matches any files
       return true; // For now, return all patterns
     });
