@@ -26,7 +26,8 @@ export class DefaultKeyGenerator implements IKeyGenerator {
   private generateNamespace(filePath: string): string {
     const dir = dirname(filePath);
     const parts = dir.split('/');
-    return parts[parts.length - 1] || 'common';
+    const lastPart = parts[parts.length - 1];
+    return (lastPart && lastPart !== '.') ? lastPart : 'common';
   }
 
   private generateKeyName(ctx: KeyGenerationContext): string {

@@ -167,4 +167,36 @@ describe('KeyAnalyzer', () => {
       'common.nested.deeper.key'
     ]);
   });
+
+  it('handles undefined messages from repository', () => {
+    const undefinedRepo = {
+      loadMessages: () => undefined
+    };
+    // @ts-expect-error - Partial mock for testing undefined messages
+    const analyzer = new KeyAnalyzer(testConfig, undefinedRepo, logger);
+    const report = analyzer.analyzeKeys();
+
+    expect(report.summary.totalKeysInReference).toBe(0);
+    expect(report.summary.overallCompleteness).toBe(100);
+  });
+
+  it('handles non-object values in messages during flattening', () => {
+    const messages = {
+      common: {
+        valid: 'string',
+        invalid: 123, // non-string value
+        nested: {
+          valid: 'nested string'
+        }
+      }
+    };
+
+    const analyzer = new KeyAnalyzer(testConfig, mockRepo, logger);
+    // @ts-expect-error - Testing private method flattenKeys
+    const flattened = analyzer.flattenKeys(messages);
+
+    expect(flattened).toContain('common.valid');
+    expect(flattened).toContain('common.nested.valid');
+    expect(flattened).toContain('common.invalid'); // Should include non-string values too
+  });
 });

@@ -40,4 +40,22 @@ describe('TextExtractor', () => {
     const texts = extractor.extract(file);
     expect(texts).toHaveLength(0);
   });
+
+  it('ignores technical strings with numbers and symbols', () => {
+    const file = {
+      path: 'test.tsx',
+      content: `export default function Page() { return <span>123-456.789</span>; }`,
+    };
+    const texts = extractor.extract(file);
+    expect(texts).toHaveLength(0);
+  });
+
+  it('ignores whitespace-only strings', () => {
+    const file = {
+      path: 'test.tsx',
+      content: `export default function Page() { return <div>   </div>; }`,
+    };
+    const texts = extractor.extract(file);
+    expect(texts).toHaveLength(0);
+  });
 });

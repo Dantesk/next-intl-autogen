@@ -112,4 +112,45 @@ describe('ProjectAnalyzer', () => {
     const globs = analyzer.getSuggestedSourceGlob(true, 'pages-router');
     expect(globs).toEqual(['src/pages/**/*.{ts,tsx,js,jsx}']);
   });
+
+  it('should handle missing package.json gracefully', () => {
+    // Mock readFileSync to throw error
+    mockReadFileSync.mockImplementation(() => {
+      throw new Error('File not found');
+    });
+
+    const analyzer = new ProjectAnalyzer('/nonexistent/project');
+    const structure = analyzer.analyze();
+
+    expect(structure).toBeDefined();
+    expect(structure.hasNextIntl).toBe(false);
+  });
+
+  it('should default to app-router when src/pages does not exist', () => {
+    mockReadFileSync.mockReturnValue(JSON.stringify({
+      dependencies: { next: 'latest' }
+    }));
+
+    mockExistsSync.mockImplementation((path: PathLike) => {
+      if (path === '/test/project/package.json') return true;
+      if (path === '/test/project/src') return true;
+      if (path === '/test/project/src/app') return true;
+      if (path === '/test/project/src/pages') return false; // No pages folder
+      return false;
+    });
+
+    const analyzer = new ProjectAnalyzer('/test/project');
+    const structure = analyzer.analyze();
+
+    expect(structure.nextjsMode).toBe('app-router');
+  });
+
+  it('should return first suggestion when no directories exist', () => {
+    mockExistsSync.mockImplementation(() => false); // Nothing exists
+
+    const analyzer = new ProjectAnalyzer('/test/project');
+    const localesDir = analyzer.getSuggestedLocalesDir(false);
+
+    expect(localesDir).toBe('./messages'); // First suggestion
+  });
 });

@@ -41,4 +41,16 @@ describe('MessagesRepository', () => {
     messages = repo.loadMessages('it');
     expect(messages.common.title).toBe('Hello');
   });
+
+  it('creates directory if it does not exist', () => {
+    // First add a translation to create the directory
+    repo.addTranslation('common', 'title', 'Hello', 'it');
+    expect(existsSync(testConfig.localesDir)).toBe(true);
+  });
+
+  it('saves messages for non-default locale with placeholder', () => {
+    repo.addTranslation('common', 'title', 'Hello', 'en'); // en is not default locale (it)
+    const messages = repo.loadMessages('en');
+    expect(messages.common.title).toBe('TODO: Hello');
+  });
 });
