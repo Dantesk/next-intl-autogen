@@ -1,6 +1,6 @@
 {
   "name": "next-intl-autogen",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI tool to automate translation extraction for Next.js projects using next-intl",
   "type": "module",
   "main": "dist/index.js",
